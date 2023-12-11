@@ -27,7 +27,7 @@ let customers = [
          'married': true,
          'age': 22,
          'expense': 1500,
-         'purchased': ['Lipstik', 'Nail Polish', 'Bag', 'Book']
+         'purchased': ['Lipstick', 'Nail Polish', 'Bag', 'Book']
       },
       {
          'id': 4,
@@ -50,3 +50,32 @@ let customers = [
          'purchased': ['Toys']
       }
    ];
+
+
+// Lets filter out the Book buying customers first.
+
+let res = customers.filter(function(data){
+   let isBookPurchased = data.purchased.includes("Book");
+
+   if (isBookPurchased == true){
+      return true;
+   }else{
+      return false;
+   }
+});
+
+console.log(res);
+
+let result1 = res.reduce(function(acc,curr){
+	acc = acc + 1;
+	return acc
+},0);
+
+let result2 = res.reduce(function(acc,curr){
+	const currAge = curr.age;
+	acc = acc + currAge;
+
+	return acc;
+},0);
+
+console.log(result2/result1);
